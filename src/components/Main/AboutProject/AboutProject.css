@@ -1,0 +1,137 @@
+.about-project {
+  color: #000000;
+  margin: 70px 70px 100px;
+}
+
+.about-project__tabl {
+  color: #FFFFFF;
+  margin-bottom: 110px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  column-gap: 21px;
+  row-gap: 26px;
+}
+
+.about-project__tabl-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__tabl-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__date {
+  display: grid;
+  grid-template-columns: 228px auto;
+  grid-template-rows: 36px auto;
+  row-gap: 14px;
+}
+
+.about-project__date-text {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-project__date-text_bold {
+  font-weight: 400;
+}
+
+.about-project__date-text_light {
+  font-weight: 500;
+  color: #A0A0A0;
+}
+
+.about-project__date-text_back {
+  background: #3DDC84;
+}
+
+.about-project__date-text_front {
+  background: #303030;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 70px 50px 93px;
+  }
+
+  .about-project__tabl {
+    margin-bottom: 90px;
+    column-gap: 29px;
+    row-gap: 26px;
+  }
+
+  .about-project__tabl-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__date {
+    display: grid;
+    grid-template-columns: 140px auto;
+    grid-template-rows: 36px auto;
+    row-gap: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-project {
+    margin: 60px 18px 70px 18px;
+  }
+
+  .about-project__tabl {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 3px;
+    margin-bottom: 55px;
+  }
+
+  .about-project__tabl-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__tabl-title:nth-last-of-type(2) {
+    grid-row: 1;
+  }
+
+  .about-project__tabl-title:nth-last-of-type(1) {
+    margin-top: 54px;
+  }
+
+
+  .about-project__tabl-text {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 15px;
+  }
+
+  .about-project__tabl-text:nth-last-of-type(2) {
+    grid-row: 2;
+  }
+
+  .about-project__date {
+    display: grid;
+    grid-template-columns: 100px auto;
+    grid-template-rows: 35px auto;
+    row-gap: 12px;
+  }
+
+  .about-project__date-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

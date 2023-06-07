@@ -1,0 +1,111 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-width: 212px;
+  width: 100%;
+  list-style: none;
+}
+
+.navigation-element {
+  margin-left: 0;
+}
+
+.navigation-element:nth-child(2n) {
+  margin-left: 20px;
+}
+
+.navigation-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navigation-link:hover {
+  opacity: 80%;
+}
+
+.navigation__profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #202020;
+}
+
+.navigation__burgermenu {
+  display: none;
+}
+
+.navigation__profile-logo {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #313131;
+  background-image: url('../../images/account-img.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 7px;
+  cursor: pointer;
+}
+
+.navigation__profile-logo:hover {
+  opacity: 70%;
+}
+
+.header__signup-link {
+  color: #fff;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__profile {
+    display: none;
+  }
+
+  .navigation-element {
+    margin-left: 0;
+    display: none;
+  }
+
+  .navigation__burgermenu {
+    display: block;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background-color: #202020;
+    background-image: url('../../images/burger-menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+  .navigation__account {
+    display: none;
+  }
+
+  .navigation__burgermenu {
+    width: 40px;
+    height: 43px;
+    background-image: url('../../images/burger-menu320.svg');
+  }
+}

@@ -1,0 +1,22 @@
+.movies__more-button {
+  width: 320px;
+  height: 36px;
+  background: #2F2F2F;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__more-button {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    width: 240px;
+  }
+}
