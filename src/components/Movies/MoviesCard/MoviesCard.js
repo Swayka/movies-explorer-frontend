@@ -1,30 +1,27 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+function MoviesCard({ movie, isMovieSaved, isSavedMoviesPage, onMovieSave, onMovieDelete }) {
+  const hours = Math.floor(movie.duration / 60);
+  const minutes = Math.floor(movie.duration - (hours * 60));
 
-function MoviesCard(props) {
+  function handleMovieSave() {
+    onMovieSave(movie);
+  };
 
-  const [isSaved, setIsSaved] = useState(true);
-  const location = useLocation().pathname;
-  const isMovies = location === '/movies';
-  const saveButtonClassName = isMovies ? (`moviescard__save-button ${isSaved ? '' : 'moviescard__save-button_active'}`) : ('moviescard__delete-movie');
-
-  function handleSave() {
-    if (isSaved) {
-      setIsSaved(false);
-    } else {
-      setIsSaved(true);
-    }
-  }
+  function handleMovieDelete() {
+    onMovieDelete(movie);
+  };
 
   return (
     <li className="moviescard">
-      <img className="moviescard__image" alt="фото" src={props.movieLink} />
-
+      <a href={movie.trailerLink} className='card__link' target='_blank' rel='noreferrer'>
+        <img className="moviescard__image" src={isSavedMoviesPage ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt={`${movie.nameRU}`} />
+      </a>
       <div className="moviescard__info" >
-        <h4 className="moviescard__name">{props.movieName}</h4>
-        <button className={saveButtonClassName} type="button" onClick={handleSave}></button>
+        <h4 className="moviescard__name">{movie.nameRU}</h4>
+
+        {isSavedMoviesPage ? <button className='moviescard__delete-movie' type='button' onClick={handleMovieDelete} />
+          : <button className={!isMovieSaved ? 'moviescard__save-button' : 'moviescard__save-button_active'} type='button' onClick={handleMovieSave}></button>}
       </div>
-      <p className="moviescard__duration">{props.movieDuration}</p>
+      <p className="moviescard__duration">{`${hours}ч${minutes}м`}</p>
     </li>
   )
 }

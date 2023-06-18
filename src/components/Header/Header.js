@@ -1,67 +1,17 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
-import NavRegistration from '../NavRegistration/NavRegistration';
+import { Link, useLocation } from 'react-router-dom';
+import mainLogo from '../../images/logo.svg'
 
-const Header = () => {
+import Navigation from '../Navigation/Navigation';
+
+const Header = ({loggedIn}) => {
+  const location = useLocation().pathname;
   return (
-    <Routes>
-      <Route path="/" element={
-        <>
-          <header className="header header__landing">
-            <Link to="/">
-              <div className="header__logo"></div>
-            </Link>
-            <NavRegistration />
+      <header className={location === '/' ? 'header header__blue' : 'header'}>
+            <Link to='/' className='header__logo'><img src={mainLogo} alt='Логотип' className='header__logo' /></Link>
+            <Navigation loggedIn={loggedIn} />
           </header>
-        </>
-      }
-      />
-      <Route path="/movies" element={
-        <>
-          <header className="header">
-            <Link to="/">
-              <div className="header__logo"></div>
-            </Link>
-            <Navigation />
-          </header>
-        </>
-      }
-      />
-      <Route path="/saved-movies" element={
-        <>
-          <header className="header">
-            <Link to="/">
-              <div className="header__logo"></div>
-            </Link>
-            <Navigation />
-          </header>
-        </>
-      }
-      />
-      <Route path="/profile" element={
-        <>
-          <header className="header">
-            <Link to="/">
-              <div className="header__logo"></div>
-            </Link>
-            <Navigation />
-          </header>
-        </>
-      }
-      />
-      <Route path="/profile-edit" element={
-        <>
-          <header className="header">
-            <Link to="/">
-              <div className="header__logo"></div>
-            </Link>
-            <Navigation />
-          </header>
-        </>
-      }
-      />
-    </Routes>
+        
   )
 }
 

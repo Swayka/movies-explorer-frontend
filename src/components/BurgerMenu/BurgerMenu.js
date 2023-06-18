@@ -1,32 +1,37 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function BurgerMenu() {
+function BurgerMenu({ onClose }) {
+
+	const handleLinkClick = () => {
+		onClose();
+	};
+
 	return (
 		<section className="burgermenu">
 			<nav className="burgermenu__container">
-				<button className="burgermenu_closebutton"></button>
+				<button className="burgermenu_closebutton" onClick={() => onClose()}></button>
 				<ul className="burgermenu__links">
 					<li className="burgermenu__element">
-						<Link to='/' className="burgermenu__link">Главная</Link>
+						<NavLink to='/' className="burgermenu__link" onClick={handleLinkClick}>Главная</NavLink>
 					</li>
 					<li className="burgermenu__element">
-						<Link to='/movies' className="burgermenu__link burgermenu__link_active">Фильмы</Link>
+						<NavLink to='/movies' className="burgermenu__link" onClick={handleLinkClick}>Фильмы</NavLink>
 					</li>
 					<li className="burgermenu__element">
-						<Link to='/saved-movies' className="burgermenu__link">Сохраненные фильмы</Link>  
+						<NavLink to='/saved-movies' className="burgermenu__link" onClick={handleLinkClick}>Сохраненные фильмы</NavLink>
 					</li>
 					<li className="burgermenu__element">
 						<div className="burgermenu__account">
-							<Link to='/profile' className="burgermenu__account-link">Аккаунт</Link>
-							<Link to="/">
+							<NavLink to='/profile' className="burgermenu__account-link" onClick={handleLinkClick}>Аккаунт</NavLink>
+							<NavLink to="/profile" onClick={handleLinkClick}>
 								<div className="burgermenu__account-logo"></div>
-							</Link>
+							</NavLink>
 						</div>
 					</li>
 				</ul>
-		  </nav>
+			</nav>
 		</section>
-		
+
 	)
 }
 

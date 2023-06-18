@@ -1,24 +1,63 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import './Profile.css';
+import Header from '../Header/Header';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useFormWithValidation } from "../../utils/validation";
 
-function Profile(props){
-    
-  return (
-    <section className="profile">
-			<h2 className="profile__heading">{props.title}</h2>
-			<div className='profile__username'>
-				<p className='profile__desc'>Имя</p>
-				<p className='profile__desc'>Виталий</p>
-			</div>
-			<div className='profile__useremail'>
-				<p className='profile__desc'>E-mail</p>
-				<p className='profile__desc'>pochta@yandex.ru</p>
-			</div>
-			<div className="profile__handlers">
-				<Link to='/profile-edit' className="profile__edit-profile">{props.submitValue}</Link>
-				<Link to='/signin' className="profile__exit-btn">{props.exitBtn}</Link>
-			</div>    
-    </section>
-  )
+
+function Profile({ loggedIn, onSignOut, onUpdateUser }) {
+    const currentUser = React.useContext(CurrentUserContext);
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (!isValid) {
+            console.log(errors);
+        } else {
+            // Передаём значения управляемых компонентов во внешний обработчик
+            onUpdateUser({
+                name: values.name,
+                email: values.email,
+            });
+            console.log(values.name, values.email)
+        }
+    }
+
+    React.useEffect(() => {
+        currentUser ? resetForm(currentUser) : resetForm();
+    }, [currentUser, resetForm]);
+
+    return (
+        <>
+            <Header loggedIn={loggedIn} />
+            <section className='profile'>
+                <h1 className='profile__title'>Привет, {currentUser.name}!</h1>
+                <form className='profile__form' onSubmit={handleSubmit}>
+                    <fieldset className='profile__fieldset' name='signup'>
+                        <label className='profile__label'>
+                            <span className='profile__value'>Имя</span>
+                            <input type='text' name='name' className='profile__form-item' placeholder='Имя' onChange={handleChange}
+                                value={values.name || ''} minLength='2'
+                                maxLength='30' pattern="[A-Za-zА-Яа-яЁё\- ]+" required />
+                            <span id='profile-error' className='profile__error'>{errors.name}</span>
+                        </label>
+                        <div className='profile__line'></div>
+                        <label className='profile__label'>
+                            <span className='profile__value'>E-mail</span>
+                            <input type='email' name='email' className='profile__form-item' placeholder='E-mail' onChange={handleChange}
+                                value={values.email || ''} required />
+                            <span id='profile-error' className='profile__error'>{errors.email}</span>
+                        </label>
+                    </fieldset>
+                    <button className={!isValid || (currentUser.name === values.name && currentUser.email === values.email) ? 'profile__button-edit_error' : 'profile__button-edit'}
+                        disabled={!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
+                        type='submit'>Редактировать</button>
+                    <button className='profile__button-exit' type='button' onClick={onSignOut} >Выйти из аккаунта</button>
+                </form>
+            </section>
+        </>
+    );
 }
 
 export default Profile;

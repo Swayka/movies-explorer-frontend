@@ -1,4 +1,4 @@
-.login {
+.register {
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -8,26 +8,26 @@
   margin-bottom: 70px;
 }
 
-.login__header {
+.register__header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 396px;
 }
 
-.login__logo {
+.register__logo {
   margin-top: 70px;
   width: 38px;
   height: 38px;
   transition: opacity 0.3s ease;
 }
 
-.login__logo:hover {
+.register__logo:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.login__title {
+.register__title {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -37,14 +37,14 @@
   margin: 37px 0;
 }
 
-.login__form {
+.register__form {
   width: 396px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login__fieldset {
+.register__fieldset {
   display: flex;
   flex-direction: column;
   border: none;
@@ -52,11 +52,11 @@
   margin: 0;
 }
 
-.login__label {
+.register__label {
   position: relative;
 }
 
-.login__value {
+.register__value {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -65,14 +65,14 @@
   color: #A0A0A0;
 }
 
-.login__form-item {
+.register__form-item {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   background-color: #2F2F2F;
-  color: #000000;
+  color: #FFFFFF;
   outline: none;
   border: none;
   border-radius: 8px;
@@ -82,13 +82,13 @@
   padding: 0;
 }
 
-.login__form-item:focus {
+.register__form-item:focus {
   outline-color: #A0A0A0;
   outline-style: solid;
   outline-width: 1.5px;
 }
 
-.login__error {
+.register__error {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -104,7 +104,7 @@
   opacity: 1;
 }
 
-.login__button {
+.register__button {
   background-color: #4285F4;
   border-radius: 3px;
   font-family: 'Inter', 'Arial', sans-serif;
@@ -117,16 +117,16 @@
   width: 396px;
   height: 45px;
   border: none;
-  margin: 163px auto 16px;
+  margin: 75px auto 16px;
   transition: opacity 0.3s ease;
 }
 
-.login__button:hover {
+.register__button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.login__button_error {
+.register__button_error {
   background-color: #A0A0A0;
   border-radius: 3px;
   font-family: 'Inter', 'Arial', sans-serif;
@@ -139,10 +139,10 @@
   width: 396px;
   height: 45px;
   border: none;
-  margin: 163px auto 16px;
+  margin: 75px auto 16px;
 }
 
-.login__text {
+.register__text {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -151,7 +151,7 @@
   color: #8B8B8B;
 }
 
-.login__text-link {
+.register__text-link {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -163,46 +163,46 @@
   margin-left: 3px;
 }
 
-.login__text-link:hover {
+.register__text-link:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
-  .login__header {
+  .register__header {
       align-items: center;
       width: 260px;
   }
 
-  .login__title {
+  .register__title {
       margin: 47px auto 75px;
   }
 
-  .login__form {
+  .register__form {
       width: 260px;
   }
 
-  .login__form-item {
+  .register__form-item {
       width: 260px;
   }
 
-  .login__error {
+  .register__error {
       width: 260px;
   }
 
-  .login__button {
+  .register__button {
       width: 260px;
-      margin: 253px auto 14px;
+      margin: 164px auto 14px;
       font-size: 12px;
       line-height: 15px;
   }
 
-  .login__text {
+  .register__text {
       font-size: 12px;
       line-height: 15px;
   }
 
-  .login__text-link {
+  .register__text-link {
       font-size: 12px;
       line-height: 15px;
   }

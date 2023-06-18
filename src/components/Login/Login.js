@@ -1,25 +1,46 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import FormLogin from '../FormLogin/FormLogin'
+import './Login.css';
+import mainLogo from '../../images/logo.svg'
+import { useFormWithValidation } from "../../utils/validation";
 
-function Login(props) {
-  return (
-    <section className="loginform">
-      <div className="loginform__container">
-      <Link to="/">
-        <div className="loginform__logo"></div>
-      </Link>
-        <h2 className="loginform__heading">{props.title}</h2>
-        {
-          <FormLogin submitValue={props.submitValue}/>
+function Login({ onLogin }) {
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!isValid) {
+            console.log(errors);
         }
-      </div>
-      <div className='loginform__question'>
-        <p className='loginform__question-text'>{props.question}</p>
-          <Link to="/signup" className='loginform__link'>{props.link}</Link>
-      </div> 
-    </section>
-  )
+        onLogin(values);
+    }
+
+    return (
+        <>
+            <section className='login'>
+                <div className='login__header'>
+                    <Link to='/'><img src={mainLogo} alt='Логотип' className='login__logo' /></Link>
+                    <h1 className='login__title'>Рады видеть!</h1>
+                </div>
+                <form className='login__form' onSubmit={handleSubmit}>
+                    <fieldset className='login__fieldset' name='signup'>
+                        <label className='login__label'>
+                            <span className='login__value'>E-mail</span>
+                            <input type='email' name='email' className='login__form-item' placeholder='E-mail' onChange={handleChange} required />
+                            <span id='login-error' className='login__error'>{errors.email}</span>
+                        </label>
+                        <label className='login__label'>
+                            <span className='login__value'>Пароль</span>
+                            <input type='password' name='password' className='login__form-item' placeholder='Пароль' onChange={handleChange} required />
+                            <span id='login-error' className='login__error'>{errors.password}</span>
+                        </label>
+                    </fieldset>
+                    <button className={!isValid ? 'login__button_error' : 'login__button'} type='submit'>Войти</button>
+                    <p className='login__text'>Ещё не зарегистрированы? <Link to='/signup' className='login__text-link'>Регистрация</Link></p>
+                </form>
+            </section>
+        </>
+    );
 }
 
 export default Login;

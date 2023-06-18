@@ -13,14 +13,7 @@
 		top: 0;
 		left: 0;
 		z-index: 2;
-		opacity: 0;
-		visibility: hidden;
 		transition: visibility .3s, opacity .3s linear;
-	}
-
-	.burgermenu_opened {
-		opacity: 1;
-		visibility: visible;
 	}
 
 	.burgermenu__container {
@@ -64,13 +57,10 @@
 		text-decoration: none;
 		font-size: 18px;
 		line-height: 22px;
-
 	}
 
-	.burgermenu__link_active {
-		padding-bottom: 4px;
+	.active {
 		border-bottom: 2px solid #fff;
-
 	}
 
 	.burgermenu__link:hover {
@@ -91,7 +81,6 @@
 		text-decoration: none;
 		font-size: 14px;
 		line-height: 16px;
-		font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
 		font-style: normal;
 		font-weight: 500;
 	}
@@ -120,11 +109,6 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: visibility .3s, opacity .3s linear;
-	}
-
-	.burgermenu_opened {
-		opacity: 1;
-		visibility: visible;
 	}
 
 	.burgermenu__container {

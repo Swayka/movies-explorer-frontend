@@ -5,10 +5,12 @@ import Techs from './Techs/Techs';
 import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
-const Main = (props) => {
+const Main = ({loggedIn}) => {
     return (
         <main className="content">
+            <Header loggedIn={loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />
