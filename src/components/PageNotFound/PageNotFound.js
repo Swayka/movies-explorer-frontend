@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function PageNotFound() {
+  const navigate = useNavigate();
   function goBack() {
-    window.history.back();
+    navigate(-1);
   }
   return (
     <div className="not-found">
