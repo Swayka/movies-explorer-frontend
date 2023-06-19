@@ -28,7 +28,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [seachedSavedMovies, setSeachedSavedMovies] = React.useState([]);
+  const [searchedSavedMovies, setSearchedSavedMovies] = React.useState([]);
   const [foundSavedMovies, setFoundSavedMovies] = React.useState([]);
   const [isCheckedSavedMovies, setIsCheckedSavedMovies] = React.useState(false);
   const [notFoundSavedMovies, setNotFoundSavedMovies] = React.useState(false);
@@ -86,6 +86,15 @@ const App = () => {
     }
 
     const listFilms = searchingMovies(request, movies);
+    if (listFilms.length === 0) {
+      setPopupMessage('Ничего не найдено');
+      setIsPopupOpen(true);
+      setSearchedMovies(listFilms);
+      setFoundMovies(listFilms);
+      localStorage.setItem('searchedText', request);
+      localStorage.setItem('movies', JSON.stringify(listFilms));
+      return;
+    }
     localStorage.setItem('searchedText', request);
     localStorage.setItem('checkboxMovies', isChecked);
 
@@ -93,42 +102,37 @@ const App = () => {
 
     const listCheckboxFilms = filterShortMovies(listFilms);
 
-    if (listFilms.length === 0) {
-      setPopupMessage('Фильм не найден');
-      setIsPopupOpen(true);
-      setFoundMovies([]);
-      localStorage.setItem('movies', JSON.stringify([]));
-      setNotFound(true);
-      return;
-    }
-
     setFoundMovies(isChecked ? listCheckboxFilms : listFilms);
+
     localStorage.setItem('movies', JSON.stringify(isChecked ? listCheckboxFilms : listFilms));
 
     if (isChecked && listCheckboxFilms.length === 0) {
-      setPopupMessage('Фильм не найден');
+      setPopupMessage('Ничего не найдено');
       setIsPopupOpen(true);
       setNotFound(true);
     }
   }
 
-  async function handleGetMovies({ request }) {
-    try {
+ 
+    function handleGetMovies({ request }) {
       if (movies.length === 0) {
         setIsLoading(true);
-        const movies = await moviesApi.getMovies();
-        setMovies(movies);
-        searchMovies(request, movies);
+        moviesApi.getMovies()
+          .then(movies => {
+            setMovies(movies);
+            searchMovies(request, movies);
+          })
+          .catch(() => {
+            setPopupMessage('Произошла ошибка.');
+            setIsPopupOpen(true);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          })
       } else {
         searchMovies(request, movies);
       }
-    } catch (error) {
-      setPopupMessage('Произошла ошибка. Попробуйте отправить запрос заново');
-      setIsPopupOpen(true);
-    } finally {
-      setIsLoading(false);
     }
-  }
 
 
   function searchingMovies(request, movies) {
@@ -149,14 +153,14 @@ const App = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
       if (notFound || (listCheckboxFilms.length === 0)) {
-        setPopupMessage('Фильм не найден');
+        setPopupMessage('Ничего не найдено');
         setIsPopupOpen(true);
       }
       setFoundMovies(listCheckboxFilms);
       setNotFound(false);
     } else {
       if (searchedMovies.length === 0) {
-        setPopupMessage('Фильм не найден');
+        setPopupMessage('Ничего не найдено');
         setIsPopupOpen(true);
       }
       setFoundMovies(searchedMovies);
@@ -230,14 +234,14 @@ const App = () => {
 
     const listFilms = searchingMovies(request, movies);
     if (listFilms.length === 0) {
-      setPopupMessage('Фильм не найден');
+      setPopupMessage('Ничего не найдено');
       setIsPopupOpen(true);
-      setSeachedSavedMovies(listFilms);
+      setSearchedSavedMovies(listFilms);
       setFoundSavedMovies(listFilms);
       return;
     }
 
-    setSeachedSavedMovies(listFilms);
+    setSearchedSavedMovies(listFilms);
 
     const listCheckboxFilms = filterShortMovies(listFilms);
 
@@ -246,30 +250,29 @@ const App = () => {
     );
 
     if (isCheckedSavedMovies && listCheckboxFilms.length === 0) {
-      setPopupMessage('Фильм не найден');
+      setPopupMessage('Ничего не найдено');
       setIsPopupOpen(true);
       setNotFoundSavedMovies(true);
     }
   }
 
   function toggleCheckboxSavedMovies() {
-    const listCheckboxFilms = filterShortMovies(seachedSavedMovies);
-    setIsCheckedSavedMovies(!isCheckedSavedMovies);
-    if (!isCheckedSavedMovies) {
-      if (notFoundSavedMovies || (listCheckboxFilms.length === 0 && savedMovies.length !== 0)) {
-        setPopupMessage('Фильм не найден');
-        setIsPopupOpen(true);
-      }
-      setFoundSavedMovies(listCheckboxFilms);
-      setNotFoundSavedMovies(false);
-    } else {
-      if (seachedSavedMovies.length === 0) {
-        setPopupMessage('Фильм не найден');
-        setIsPopupOpen(true);
-      }
-      setFoundSavedMovies(seachedSavedMovies);
+    const updatedCheckedSavedMovies = !isCheckedSavedMovies;
+    setIsCheckedSavedMovies(updatedCheckedSavedMovies);
+
+    const listCheckboxFilms = updatedCheckedSavedMovies
+      ? filterShortMovies(savedMovies)
+      : savedMovies;
+  
+    setFoundSavedMovies(listCheckboxFilms);
+  
+    if (updatedCheckedSavedMovies && listCheckboxFilms.length === 0) {
+      setPopupMessage('Ничего не найдено');
+      setIsPopupOpen(true);
     }
   }
+  
+  
   
 
 
@@ -310,7 +313,7 @@ const App = () => {
           setCurrentUser(user);
           setSavedMovies(movies);
           setFoundSavedMovies(movies);
-          setSeachedSavedMovies(movies);
+          setSearchedSavedMovies(movies);
         })
         .catch((err) => {
           setPopupMessage(err);
