@@ -10,7 +10,7 @@ class MainApi {
       return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  //Информация о пользователе
+
   getUserInfo() {
       const token = localStorage.getItem('jwt');
       return fetch(`${this._baseUrl}/users/me`,
@@ -26,7 +26,7 @@ class MainApi {
           })
   }
 
-  //Обновление информации о пользователе
+
   updateUserInfo(userName, userEmail) {
       const token = localStorage.getItem('jwt');
       return fetch(`${this._baseUrl}/users/me`,
@@ -47,8 +47,8 @@ class MainApi {
           })
   }
 
-  //Загрузка сохраненных карточек
-  getInitialMovies() {
+
+  getMovies() {
       const token = localStorage.getItem('jwt');
       return fetch(`${this._baseUrl}/movies`,
           {
@@ -64,8 +64,8 @@ class MainApi {
           })
   }
 
-  //Сохранение карточки
-  changeLikeMovieStatus(movie) {
+
+  toggleLikeMovie(movie) {
       const token = localStorage.getItem('jwt');
       return fetch(`${this._baseUrl}/movies`,
           {
@@ -94,8 +94,8 @@ class MainApi {
           })
   }
 
-  //Удаление карточки
-  deleteMovieItem(movieId) {
+
+  deleteMovie(movieId) {
       const token = localStorage.getItem('jwt');
       return fetch(`${this._baseUrl}/movies/${movieId}`,
           {

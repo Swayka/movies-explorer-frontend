@@ -7,7 +7,7 @@ function checkResponse(res) {
     return Promise.reject(`Ошибка: ${res.status}`)
 }
 
-export const register = (name, email, password) => {
+export const registration = (name, email, password) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ export const register = (name, email, password) => {
         })
 };
 
-export const authorize = (email, password) => {
+export const login = (email, password) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
@@ -40,7 +40,7 @@ export const authorize = (email, password) => {
         })
 };
 
-export const getContent = (token) => {
+export const getUser = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {

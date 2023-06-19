@@ -10,7 +10,6 @@ class MoviesApi {
       return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  //получение списка фильмов
   getMovies() {
       return fetch(this._baseUrl,
           {

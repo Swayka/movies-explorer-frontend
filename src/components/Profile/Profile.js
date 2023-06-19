@@ -15,12 +15,10 @@ function Profile({ loggedIn, onSignOut, onUpdateUser }) {
         if (!isValid) {
             console.log(errors);
         } else {
-            // Передаём значения управляемых компонентов во внешний обработчик
             onUpdateUser({
                 name: values.name,
                 email: values.email,
             });
-            console.log(values.name, values.email)
         }
     }
 
@@ -39,7 +37,7 @@ function Profile({ loggedIn, onSignOut, onUpdateUser }) {
                             <span className='profile__value'>Имя</span>
                             <input type='text' name='name' className='profile__form-item' placeholder='Имя' onChange={handleChange}
                                 value={values.name || ''} minLength='2'
-                                maxLength='30' pattern="[A-Za-zА-Яа-яЁё\- ]+" required />
+                                maxLength='30'  required />
                             <span id='profile-error' className='profile__error'>{errors.name}</span>
                         </label>
                         <div className='profile__line'></div>

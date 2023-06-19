@@ -83,7 +83,7 @@ function MoviesCardList({ isSavedMoviesPage, movies, savedMovies, onMovieSave, o
           ))}
 
       </div>
-      {isSavedMoviesPage ? <div className='movies-section__div'></div> : <button className={movies.length <= showedMovies.length ? 'movies-section_none' : 'movies-section__button'} onClick={getMoreMovies}>Ещё</button>}
+      {isSavedMoviesPage ? <div className='movies-section'></div> : <button className={movies.length <= showedMovies.length ? 'movies-section_none' : 'movies-section__button'} onClick={getMoreMovies}>Ещё</button>}
     </section>
   )
 }

@@ -19,9 +19,9 @@ function SearchForm({ handleSubmitForm, handleCheckbox, isChecked, setIsChecked 
   }
 
   React.useEffect(() => {
-    if (location === '/movies' && localStorage.getItem('searchedText')) {
-      const searchedText = localStorage.getItem('searchedText');
-      values.search__input = searchedText;
+    if (location === '/movies' && localStorage.getItem('searchedMovies')) {
+      const searchedMovies = localStorage.getItem('searchedMovies');
+      values.search__input = searchedMovies;
     }
 
     if (localStorage.getItem('checkboxMovies') === 'true') {

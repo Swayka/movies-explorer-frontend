@@ -10,7 +10,7 @@ function Movies({ loggedIn, movies, savedMovies, handleSubmitForm, handleCheckbo
     <section className="movies">
       <Header loggedIn={loggedIn} />
       <SearchForm handleSubmitForm={handleSubmitForm} handleCheckbox={handleCheckbox} isChecked={isChecked} setIsChecked={setIsChecked} />
-      <div className="movies__line"></div>
+      <div className="movies"></div>
       {isLoading ? <Preloader /> : <MoviesCardList isSavedMoviesPage={false} movies={movies} savedMovies={savedMovies} onMovieSave={onMovieSave} />}
       <Footer />
     </section>
