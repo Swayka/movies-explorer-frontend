@@ -66,6 +66,8 @@ const App = () => {
     mainApi.updateUserInfo(name, email)
       .then((data) => {
         setCurrentUser(data);
+        setPopupMessage('Данные успешно изменены');
+      setIsPopupOpen(true);
       })
       .catch((err) => {
         setPopupMessage(err);
