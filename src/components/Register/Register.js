@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './Register.css';
 import mainLogo from '../../images/logo.svg'
 import { useFormWithValidation } from "../../utils/validation";
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Register({ onRegister }) {
+
+function Register({ onRegister, loggedIn }) {
   const { values, handleChange, errors, isValid } = useFormWithValidation();
-  const currentUser = useContext(CurrentUserContext);
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,9 +22,9 @@ function Register({ onRegister }) {
     }
   }
   
-  if (currentUser) {
+  if (loggedIn) {
     return <Navigate to="/" replace />;
-  }
+}
 
   return (
     <>

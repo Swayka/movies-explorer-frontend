@@ -334,10 +334,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main loggedIn={loggedIn} />} />
           <Route path="/signin"
-            element={<Login onLogin={handleLogin} />}
+            element={<Login onLogin={handleLogin} loggedIn={loggedIn}/>}
           />
           <Route path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={<Register onRegister={handleRegister} loggedIn={loggedIn}/>}
           />
           <Route path="/profile"
             element={
