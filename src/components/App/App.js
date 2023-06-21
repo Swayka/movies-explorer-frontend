@@ -13,6 +13,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import * as auth from '../../utils/auth';
+import { SHORTFILM } from '../../utils/constants';
 
 
 const App = () => {
@@ -144,7 +145,7 @@ const App = () => {
 
 
   function filterShortMovies(movies) {
-    return movies.filter(movie => movie.duration < 40);
+    return movies.filter(movie => movie.duration < SHORTFILM);
   }
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import { DESKTOP_WIDTH, BIG_DESKTOP_WIDTH, BIG_TABLET_WIDTH, MOBILE_WIDTH, LIST_MOVIE_BIG_DESKTOP_WIDTH, LIST_MOVIE_BIG_TABLET_WIDTH, LIST_MOVIE_TABLET_WIDTH, LIST_MOVIE_MOBILE_WIDTH, ADD_MOVIES_BIG_DESKTOP_WIDTH, ADD_MOVIES_BIG_TABLET_WIDTH, ADD_MOVIES_TABLET_WIDTH, ADD_MOVIES_MOBILE_WIDTH } from '../../../utils/constants';
 
 function MoviesCardList({ isSavedMoviesPage, movies, savedMovies, onMovieSave, onMovieDelete }) {
   const [showedMovies, setShowedMovies] = React.useState(movies);
@@ -11,14 +12,14 @@ function MoviesCardList({ isSavedMoviesPage, movies, savedMovies, onMovieSave, o
   }
 
   function getMoreMovies() {
-    if (windowWidth.innerWidth > 1279) {
-      setShowedMovies(movies.slice(0, showedMovies.length + 4))
-    } else if (windowWidth.innerWidth < 1280 && windowWidth.innerWidth > 989) {
-      setShowedMovies(movies.slice(0, showedMovies.length + 3))
-    } else if (windowWidth.innerWidth < 1280 && windowWidth.innerWidth > 639) {
-      setShowedMovies(movies.slice(0, showedMovies.length + 2))
+    if (windowWidth.innerWidth > DESKTOP_WIDTH) {
+      setShowedMovies(movies.slice(0, showedMovies.length + ADD_MOVIES_BIG_DESKTOP_WIDTH))
+    } else if (windowWidth.innerWidth < BIG_DESKTOP_WIDTH && windowWidth.innerWidth > BIG_TABLET_WIDTH) {
+      setShowedMovies(movies.slice(0, showedMovies.length + ADD_MOVIES_BIG_TABLET_WIDTH))
+    } else if (windowWidth.innerWidth < BIG_DESKTOP_WIDTH && windowWidth.innerWidth > MOBILE_WIDTH) {
+      setShowedMovies(movies.slice(0, showedMovies.length + ADD_MOVIES_TABLET_WIDTH))
     } else {
-      setShowedMovies(movies.slice(0, showedMovies.length + 5))
+      setShowedMovies(movies.slice(0, showedMovies.length + ADD_MOVIES_MOBILE_WIDTH))
     }
   }
 
@@ -43,14 +44,14 @@ function MoviesCardList({ isSavedMoviesPage, movies, savedMovies, onMovieSave, o
   }, []);
 
   React.useEffect(() => {
-    if (windowWidth.innerWidth > 1279) {
-      setShowedMovies(movies.slice(0, 16))
-    } else if (windowWidth.innerWidth < 1280 && windowWidth.innerWidth > 989) {
-      setShowedMovies(movies.slice(0, 9));
-    } else if (windowWidth.innerWidth <= 989 && windowWidth.innerWidth > 639) {
-      setShowedMovies(movies.slice(0, 8));
-    } else if (windowWidth.innerWidth <= 639) {
-      setShowedMovies(movies.slice(0, 5));
+    if (windowWidth.innerWidth > DESKTOP_WIDTH) {
+      setShowedMovies(movies.slice(0, LIST_MOVIE_BIG_DESKTOP_WIDTH))
+    } else if (windowWidth.innerWidth < BIG_DESKTOP_WIDTH && windowWidth.innerWidth > BIG_TABLET_WIDTH) {
+      setShowedMovies(movies.slice(0, LIST_MOVIE_BIG_TABLET_WIDTH));
+    } else if (windowWidth.innerWidth <= BIG_TABLET_WIDTH && windowWidth.innerWidth > MOBILE_WIDTH) {
+      setShowedMovies(movies.slice(0, LIST_MOVIE_TABLET_WIDTH));
+    } else if (windowWidth.innerWidth <= MOBILE_WIDTH) {
+      setShowedMovies(movies.slice(0, LIST_MOVIE_MOBILE_WIDTH));
     }
     else {
       setShowedMovies(movies);
