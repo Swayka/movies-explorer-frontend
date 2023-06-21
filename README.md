@@ -1,8 +1,9 @@
 
 Ссылка на макет: https://disk.yandex.ru/d/w51EVUl7cbVjbg
 
-ссылка на Pull request https://github.com/Swayka/movies-explorer-frontend/pull/2
+Ссылка на Pull request https://github.com/Swayka/movies-explorer-frontend/pull/2
 
+Ссылка на фронтенд https://manzhikova.diploma.nomoredomains.rocks/
 
 # Getting Started with Create React App
 
