@@ -1,0 +1,13 @@
+export const SHORTFILM = 40;
+export const DESKTOP_WIDTH = 1279;
+export const BIG_DESKTOP_WIDTH = 1280;
+export const BIG_TABLET_WIDTH = 989;
+export const MOBILE_WIDTH = 639;
+export const LIST_MOVIE_BIG_DESKTOP_WIDTH = 16;
+export const LIST_MOVIE_BIG_TABLET_WIDTH = 9;
+export const LIST_MOVIE_TABLET_WIDTH = 8;
+export const LIST_MOVIE_MOBILE_WIDTH = 5;
+export const ADD_MOVIES_BIG_DESKTOP_WIDTH = 4;
+export const ADD_MOVIES_BIG_TABLET_WIDTH = 3;
+export const ADD_MOVIES_TABLET_WIDTH = 2;
+export const ADD_MOVIES_MOBILE_WIDTH = 5;

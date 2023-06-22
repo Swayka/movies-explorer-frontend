@@ -1,0 +1,214 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-width: 212px;
+  width: 100%;
+  list-style: none;
+}
+
+.navigation-element {
+  margin-left: 0;
+}
+
+.navigation-element:nth-child(2n) {
+  margin-left: 20px;
+}
+
+.navigation-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navigation-link:hover {
+  opacity: 80%;
+}
+
+.navigation__profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navigation__burgermenu {
+  display: none;
+}
+.navigation__burgermenu_close {
+  display: none;
+}
+
+.navigation__profile-logo {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #313131;
+  background-image: url('../../images/account-img.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 7px;
+  cursor: pointer;
+}
+
+.navigation__profile-logo:hover {
+  opacity: 70%;
+}
+
+.header__signup-link {
+  color: #fff;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+  margin-left: 50px;
+}
+
+.navigation__popup {
+  background: none;
+  margin-right: 5px;
+  background-image: url('../../images/burger-menu.svg');
+  width: 44px;
+  height: 44px;
+  border: none;
+  transition: opacity 0.3s ease;
+  display: none;
+}
+
+.navigation__popup:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.navigation__popup_close {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__profile {
+    display: none;
+  }
+
+  .navigation-element {
+    margin-left: 0;
+    display: none;
+  }
+
+  .navigation__burgermenu {
+    display: block;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background-color: transparent;
+    background-image: url('../../images/burger-menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    padding: 0;
+  }
+  }
+
+@media screen and (max-width: 320px) {
+
+  .navigation__account {
+    display: none;
+  }
+
+  .navigation__burgermenu {
+    width: 40px;
+    height: 43px;
+    background-image: url('../../images/burger-menu320.svg');
+  }
+}
+
+.navregistration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+
+}
+
+.navregistration__signup-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.navregistration__signup-link:hover {
+  opacity: 80%;
+}
+
+.navregistration__signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  height: 32px;
+  background-color: #3DDC84;
+  border-radius: 3px;
+  border: 0;
+  margin-left: 30px;
+}
+
+.header__signin:hover {
+  opacity: 80%;
+}
+
+.navregistration__signin-button {
+  color: #000;
+  text-decoration: none;
+  background-color: #3DDC84;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+  .navregistration__signup-link {
+    font-size: 10px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navregistration__signin {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0;
+  }
+
+  .navregistration__signin-button {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .navregistration__signin {
+    width: 54px;
+    height: 26px;
+    border-radius: 3px;
+    margin-left: 14px;
+  }
+}
